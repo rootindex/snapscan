@@ -1,0 +1,23 @@
+{
+  "name": "fdw/module-snap-scan",
+  "description": "FDW SnapScan magento2-module",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0"
+  },
+  "type": "magento2-module",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Francois Raubenheimer",
+      "email": "fran@fontera.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "FDW\\SnapScan\\": ""
+    }
+  }
+}
