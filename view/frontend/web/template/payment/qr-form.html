@@ -1,0 +1,14 @@
+<!--
+  ~ Copyright © 2016 Fontera Digital Works. All rights reserved.
+  ~ See LICENSE.md for license details.
+  -->
+<fieldset data-bind="attr: {class: 'fieldset payment items ' + getCode(), id: 'payment_form_' + getCode()}">
+    <div class="field">
+        <label data-bind="attr: {for: getCode() + '_qr_code'}" class="label">
+            <span><!-- ko i18n: 'Scan the SnapCode to complete the payment.'--><!-- /ko --></span>
+        </label>
+        <div class="control">
+            <img src="" alt="SnapScan QR Code" data-bind="attr: {id: getCode() + '_qr_code', src: getQRCodeUrl()}"/>
+        </div>
+    </div>
+</fieldset>

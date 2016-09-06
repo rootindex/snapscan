@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright © 2016 FDW. All rights reserved.
- * See LICENCE.md for license details.
+ * Copyright © 2016 Fontera Digital Works. All rights reserved.
+ * See LICENSE.md for license details.
  */
 
 use Magento\Framework\Component\ComponentRegistrar;

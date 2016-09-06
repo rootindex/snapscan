@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2016 Fontera Digital Works. All rights reserved.
+  ~ See LICENSE.md for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="snapscan_section" translate="label" type="text" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[SnapScan <small>by Fontera Digital Works</small>]]></label>
+                <comment><![CDATA[
+                    Quick, easy payments, for you and your customers. Works with any South African Bank.
+                    Visit your merchant accounting system <a href="https://merchant.getsnapscan.com" target="_blank">here</a>.
+                ]]></comment>
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>complex snapscan-section</fieldset_css>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Group</frontend_model>
+                <group id="snapscan" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>For Business</label>
+                    <more_url>http://www.snapscan.co.za/</more_url>
+                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
+                    <attribute type="activity_path">payment/snapscan/active</attribute>
+                    <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Enable this Solution</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/snapscan/active</config_path>
+                        <requires>
+                            <group id="snapscan_required"/>
+                        </requires>
+                    </field>
+                    <group id="snapscan_required" translate="label" showInDefault="1" showInWebsite="1" sortOrder="20">
+                        <label>Required Settings</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="title" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                            <label>Title</label>
+                            <config_path>payment/snapscan/title</config_path>
+                        </field>
+                        <field id="merchant_id" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Merchant Id</label>
+                            <config_path>payment/snapscan/merchant_id</config_path>
+                        </field>
+                        <field id="api_key" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>API Key</label>
+                            <config_path>payment/snapscan/api_key</config_path>
+                        </field>
+                    </group>
+                    <group id="snapscan_additional" translate="label" showInDefault="1" showInWebsite="1" sortOrder="30">
+                        <label>Additional Settings</label>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="snap_code_size" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                            <label>QR Code Size</label>
+                            <validate>required-entry validate-digits-range digits-range-50-500</validate>
+                            <comment><![CDATA[Choose a size between 50 to 500]]></comment>
+                            <config_path>payment/snapscan/snap_code_size</config_path>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>
