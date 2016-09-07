@@ -29,10 +29,8 @@ class CaptureTransferFactory implements TransferFactoryInterface
      * @param TransferBuilder $transferBuilder
      * @param ConfigInterface $config
      */
-    public function __construct(
-        TransferBuilder $transferBuilder,
-        ConfigInterface $config
-    ) {
+    public function __construct(TransferBuilder $transferBuilder, ConfigInterface $config)
+    {
         $this->transferBuilder = $transferBuilder;
         $this->config = $config;
     }

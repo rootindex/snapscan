@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright © 2016 Fontera Digital Works. All rights reserved.
  * See LICENSE.md for license details.
@@ -7,7 +6,9 @@
 namespace FDW\SnapScan\Gateway\Http\Client;
 
 use Magento\Framework\HTTP\ZendClientFactory;
+use Magento\Payment\Gateway\Http\ClientException;
 use Magento\Payment\Gateway\Http\ClientInterface;
+use Magento\Payment\Gateway\Http\ConverterException;
 use Magento\Payment\Gateway\Http\ConverterInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
@@ -43,7 +44,8 @@ class Zend implements ClientInterface
         ZendClientFactory $clientFactory,
         Logger $logger,
         ConverterInterface $converter = null
-    ) {
+    )
+    {
         $this->clientFactory = $clientFactory;
         $this->converter = $converter;
         $this->logger = $logger;
@@ -67,7 +69,7 @@ class Zend implements ClientInterface
         /** @TODO Find out if \Magento\Payment\Gateway\Http\Client\Zend can be done better */
         $client->setAuth($transferObject->getAuthUsername());
 
-        switch($transferObject->getMethod()) {
+        switch ($transferObject->getMethod()) {
             case \Zend_Http_Client::GET:
                 $client->setParameterGet($transferObject->getBody());
                 break;
@@ -94,11 +96,10 @@ class Zend implements ClientInterface
                 ? $this->converter->convert($response->getBody())
                 : [$response->getBody()];
             $log['response'] = $result;
+
         } catch (\Zend_Http_Client_Exception $e) {
-            throw new \Magento\Payment\Gateway\Http\ClientException(
-                __($e->getMessage())
-            );
-        } catch (\Magento\Payment\Gateway\Http\ConverterException $e) {
+            throw new ClientException(__($e->getMessage()));
+        } catch (ConverterException $e) {
             throw $e;
         } finally {
             $this->logger->debug($log);

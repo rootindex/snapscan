@@ -27,7 +27,6 @@ class JsonToArray implements ConverterInterface
         if (!is_string($response)) {
             throw new ConverterException(__('Wrong response type'));
         }
-
         return json_decode($response, true);
     }
 }

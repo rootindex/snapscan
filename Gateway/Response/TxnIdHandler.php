@@ -8,6 +8,10 @@ namespace FDW\SnapScan\Gateway\Response;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 
+/**
+ * Class TxnIdHandler
+ * @package FDW\SnapScan\Gateway\Response
+ */
 class TxnIdHandler implements HandlerInterface
 {
     const TXN_ID = 'id';
@@ -29,12 +33,18 @@ class TxnIdHandler implements HandlerInterface
 
         /** @var PaymentDataObjectInterface $paymentDO */
         $paymentDO = $handlingSubject['payment'];
-
-        $payment = $paymentDO->getPayment();
-
         /** @var $payment \Magento\Sales\Model\Order\Payment */
-
+        $payment = $paymentDO->getPayment();
         $payment->setTransactionId('SnapScan-Id: ' . $response[0][self::TXN_ID]);
+        // get totals paid
+        $amountPaid = 0;
+
+        // record if the user overpaid
+        foreach ($response as $snapScanTransaction) {
+            $amountPaid += $snapScanTransaction['totalAmount'];
+        }
+
+        $payment->setAmountPaid($amountPaid);
         $payment->setIsTransactionClosed(true);
     }
 }

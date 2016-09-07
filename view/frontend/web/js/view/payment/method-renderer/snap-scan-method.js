@@ -93,6 +93,11 @@ define(
                     // convert to cents
                     total = this.getTotalsValue('base_grand_total') * 100;
                 }
+
+                // just in case we did not have ZAR as an available currency
+                if (total === 0) {
+                    return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+                }
                 //var baseTotals = quote.totals.base_grand_total * 100;
                 return this.getSnapChatApiUrl() + '/qr/' + this.getSnapCode() + '.svg?id=' + quote.getQuoteId()
                     + '&amount=' + total + '&snap_code_size=' + this.getSnapCodeSize() + '&strict=true';
