@@ -5,7 +5,6 @@
  */
 namespace FDW\SnapScan\Gateway\Request;
 
-use Magento\Payment\Gateway\ConfigInterface;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
@@ -16,20 +15,6 @@ use Magento\Sales\Api\Data\OrderPaymentInterface;
  */
 class CaptureRequest implements BuilderInterface
 {
-    /**
-     * @var ConfigInterface
-     */
-    private $config;
-
-    /**
-     * @param ConfigInterface $config
-     */
-    public function __construct(
-        ConfigInterface $config
-    ) {
-        $this->config = $config;
-    }
-
     /**
      * Builds ENV request
      *
@@ -46,9 +31,6 @@ class CaptureRequest implements BuilderInterface
 
         /** @var PaymentDataObjectInterface $paymentDO */
         $paymentDO = $buildSubject['payment'];
-
-        $order = $paymentDO->getOrder();
-
         $payment = $paymentDO->getPayment();
 
         if (!$payment instanceof OrderPaymentInterface) {
@@ -56,12 +38,8 @@ class CaptureRequest implements BuilderInterface
         }
 
         return [
-            'TXN_TYPE' => 'S',
-            'TXN_ID' => $payment->getLastTransId(),
-            'MERCHANT_KEY' => $this->config->getValue(
-                'merchant_gateway_key',
-                $order->getStoreId()
-            )
+            'merchantReference' => $payment->getAdditionalInformation('quoteId'),
+            'status' => 'completed'
         ];
     }
 }

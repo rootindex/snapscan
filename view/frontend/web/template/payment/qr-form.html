@@ -11,4 +11,30 @@
             <img src="" alt="SnapScan QR Code" data-bind="attr: {id: getCode() + '_qr_code', src: getQRCodeUrl()}"/>
         </div>
     </div>
+    <div class="field choice required">
+        <div class="control">
+            <input type="checkbox"
+                   name="payment[confirmed_paid]"
+                   class="checkbox"
+                   data-bind="attr: {
+                       'id': getCode() + '_confirmed_paid',
+                       'data-container': getCode() + '-confirmed-paid',
+                       'data-validate': JSON.stringify({'required':true, 'required-entry':true})
+                   }"/>
+            <label class="label" data-bind="attr: {'for': getCode() + '_confirmed_paid'}">
+                <span><!-- ko i18n: 'I have made the payment on SnapScan.'--><!-- /ko --></span>
+            </label>
+            <div class="field-tooltip toggle">
+                            <span class="field-tooltip-action action-confirmed-paid"
+                                  tabindex="0"
+                                  data-toggle="dropdown"
+                                  data-bind="attr: {title: $t('What is this?')}, mageInit: {'dropdown':{'activeClass': '_active'}}">
+                                <span translate="'What is this?'"></span>
+                            </span>
+                <div class="field-tooltip-content"
+                     data-target="dropdown"
+                     translate="'Only press Pay with SnapScan after you have paid with the SnapScan app.'"></div>
+            </div>
+        </div>
+    </div>
 </fieldset>

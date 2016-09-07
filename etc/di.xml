@@ -46,9 +46,19 @@
         <arguments>
             <argument name="requestBuilder" xsi:type="object">FDW\SnapScan\Gateway\Request\CaptureRequest</argument>
             <argument name="handler" xsi:type="object">FDW\SnapScan\Gateway\Response\TxnIdHandler</argument>
-            <argument name="transferFactory" xsi:type="object">FDW\SnapScan\Gateway\Http\TransferFactory</argument>
+            <argument name="transferFactory" xsi:type="object">FDW\SnapScan\Gateway\Http\CaptureTransferFactory</argument>
             <argument name="validator" xsi:type="object">FDW\SnapScan\Gateway\Validator\ResponseCodeValidator</argument>
-            <argument name="client" xsi:type="object">FDW\SnapScan\Gateway\Http\Client\ClientMock</argument>
+            <argument name="client" xsi:type="object">SnapScanGateWayClient</argument>
+        </arguments>
+    </virtualType>
+    <type name="FDW\SnapScan\Gateway\Http\CaptureTransferFactory">
+        <arguments>
+            <argument name="config" xsi:type="object">SnapScanGatewayConfig</argument>
+        </arguments>
+    </type>
+    <virtualType name="SnapScanGateWayClient" type="FDW\SnapScan\Gateway\Http\Client\Zend">
+        <arguments>
+            <argument name="converter" xsi:type="object">FDW\SnapScan\Gateway\Http\Converter\JsonToArray</argument>
         </arguments>
     </virtualType>
 </config>

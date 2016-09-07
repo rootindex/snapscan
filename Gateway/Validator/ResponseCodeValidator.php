@@ -7,12 +7,13 @@ namespace FDW\SnapScan\Gateway\Validator;
 
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
-use FDW\SnapScan\Gateway\Http\Client\ClientMock;
 
+/**
+ * Class ResponseCodeValidator
+ * @package FDW\SnapScan\Gateway\Validator
+ */
 class ResponseCodeValidator extends AbstractValidator
 {
-    const RESULT_CODE = 'RESULT_CODE';
-
     /**
      * Performs validation of result code
      *
@@ -21,6 +22,7 @@ class ResponseCodeValidator extends AbstractValidator
      */
     public function validate(array $validationSubject)
     {
+
         if (!isset($validationSubject['response']) || !is_array($validationSubject['response'])) {
             throw new \InvalidArgumentException('Response does not exist');
         }
@@ -35,7 +37,7 @@ class ResponseCodeValidator extends AbstractValidator
         } else {
             return $this->createResult(
                 false,
-                [__('Gateway rejected the transaction.')]
+                [__('SnapScan gateway rejected the transaction.')]
             );
         }
     }
@@ -46,7 +48,6 @@ class ResponseCodeValidator extends AbstractValidator
      */
     private function isSuccessfulTransaction(array $response)
     {
-        return isset($response[self::RESULT_CODE])
-        && $response[self::RESULT_CODE] !== ClientMock::FAILURE;
+        return count($response) !== 0 ? true : false;
     }
 }

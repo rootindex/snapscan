@@ -46,7 +46,6 @@ class DataAssignObserver extends AbstractDataAssignObserver
         if (!$payment instanceof InfoInterface) {
             throw new LocalizedException(__('Payment model not provided.'));
         }
-        // @TODO add in additional here
-        // $payment->setCcLast4(substr($additionalData->getData('cc_number'), -4));
+        $payment->setAdditionalInformation('quoteId', $additionalData->getData('quoteId'));
     }
 }

@@ -5,29 +5,36 @@
  */
 namespace FDW\SnapScan\Gateway\Http;
 
+use Magento\Payment\Gateway\ConfigInterface;
 use Magento\Payment\Gateway\Http\TransferBuilder;
 use Magento\Payment\Gateway\Http\TransferFactoryInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
-use FDW\SnapScan\Gateway\Request\MockDataRequest;
 
 /**
- * Class TransferFactory
+ * Class CaptureTransferFactory
  * @package FDW\SnapScan\Gateway\Http
  */
-class TransferFactory implements TransferFactoryInterface
+class CaptureTransferFactory implements TransferFactoryInterface
 {
     /**
      * @var TransferBuilder
      */
     private $transferBuilder;
+    /**
+     * @var ConfigInterface
+     */
+    private $config;
 
     /**
      * @param TransferBuilder $transferBuilder
+     * @param ConfigInterface $config
      */
     public function __construct(
-        TransferBuilder $transferBuilder
+        TransferBuilder $transferBuilder,
+        ConfigInterface $config
     ) {
         $this->transferBuilder = $transferBuilder;
+        $this->config = $config;
     }
 
     /**
@@ -40,14 +47,9 @@ class TransferFactory implements TransferFactoryInterface
     {
         return $this->transferBuilder
             ->setBody($request)
-            ->setMethod('POST')
-            ->setHeaders(
-                [
-                    'force_result' => isset($request[MockDataRequest::FORCE_RESULT])
-                        ? $request[MockDataRequest::FORCE_RESULT]
-                        : null
-                ]
-            )
+            ->setAuthUsername($this->config->getValue('api_key'))
+            ->setUri(rtrim($this->config->getValue('api_url'), '/') . '/merchant/api/v1/payments/')
+            ->setMethod('GET')
             ->build();
     }
 }
