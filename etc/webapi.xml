@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2016 Fontera Digital Works. All rights reserved.
+  ~ See LICENSE.md for license details.
+  -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Managing shipping guest information -->
+    <route url="/V1/snap-scan/:tokenId/webhook" method="POST">
+        <service class="FDW\SnapScan\Api\SnapScanPaymentManagementInterface" method="savePaymentInformation"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+        <data>
+            <parameter name="payload" force="true">%payload%</parameter>
+        </data>
+    </route>
+</routes>
