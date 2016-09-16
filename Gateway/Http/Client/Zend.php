@@ -44,8 +44,7 @@ class Zend implements ClientInterface
         ZendClientFactory $clientFactory,
         Logger $logger,
         ConverterInterface $converter = null
-    )
-    {
+    ) {
         $this->clientFactory = $clientFactory;
         $this->converter = $converter;
         $this->logger = $logger;
