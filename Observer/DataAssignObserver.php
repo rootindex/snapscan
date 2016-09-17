@@ -7,7 +7,6 @@
 namespace FDW\SnapScan\Observer;
 
 use Magento\Framework\DataObject;
-use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Observer\AbstractDataAssignObserver;
@@ -31,6 +30,7 @@ class DataAssignObserver extends AbstractDataAssignObserver
         $data = $this->readDataArgument($observer);
 
         $additionalData = $data->getData(PaymentInterface::KEY_ADDITIONAL_DATA);
+
         if (!is_array($additionalData)) {
             return;
         }
@@ -39,6 +39,8 @@ class DataAssignObserver extends AbstractDataAssignObserver
         $paymentMethod = $this->readMethodArgument($observer);
 
         $payment = $observer->getPaymentModel();
+
+        // legacy support.
         if (!$payment instanceof InfoInterface) {
             $payment = $paymentMethod->getInfoInstance();
         }

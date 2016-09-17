@@ -4,6 +4,9 @@
   ~ See LICENSE.md for license details.
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="FDW\SnapScan\Api\Data\PaymentInterface" type="FDW\SnapScan\Model\Payment"/>
+    <preference for="FDW\SnapScan\Api\Data\PaymentSearchResultInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="FDW\SnapScan\Api\PaymentRepositoryInterface" type="FDW\SnapScan\Model\PaymentRepository" />
     <virtualType name="SnapScanGatewayFacade" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
             <argument name="code" xsi:type="const">FDW\SnapScan\Model\Ui\SnapScanConfigProvider::CODE</argument>

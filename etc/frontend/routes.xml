@@ -4,8 +4,8 @@
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="snapscan" frontName="snap-scan">
-            <module name="Magento_Checkout"/>
+        <route id="snapscan" frontName="snapscan">
+            <module name="FDW_SnapScan"/>
         </route>
     </router>
 </config>

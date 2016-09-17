@@ -21,7 +21,6 @@
                 <model>SnapScanGatewayFacade</model>
                 <order_status>processing</order_status>
                 <payment_action>authorize_capture</payment_action>
-                <debugReplaceKeys>expiryMonth,expiryYear</debugReplaceKeys>
                 <title>SnapScan</title>
                 <api_url>https://pos.snapscan.io</api_url>
                 <snap_code_size>300</snap_code_size>
