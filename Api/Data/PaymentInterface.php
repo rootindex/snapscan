@@ -15,7 +15,8 @@ interface PaymentInterface
     /**#@+
      * Constants
      */
-    const ID = 'id';
+    const ID = 'entity_id';
+    const SNAPSCAN_ID = 'snapscan_id';
     const STATUS = 'status';
     const TOTAL_AMOUNT = 'total_amount';
     const TIP_AMOUNT = 'tip_amount';
@@ -36,13 +37,13 @@ interface PaymentInterface
     /**
      * @return int
      */
-    public function getId();
+    public function getSnapscanId();
 
     /**
-     * @param int $id
+     * @param int $snapScanId
      * @return PaymentInterface
      */
-    public function setId($id);
+    public function setSnapscanId($snapScanId);
 
     /**
      * @return string
@@ -188,23 +189,23 @@ interface PaymentInterface
     public function setAuthCode($authCode);
 
     /**
-     * @return array
+     * @return string
      */
     public function getDeliveryAddress();
 
     /**
-     * @param array $deliveryAddress
+     * @param string $deliveryAddress
      * @return PaymentInterface
      */
     public function setDeliveryAddress($deliveryAddress);
 
     /**
-     * @return array
+     * @return string
      */
     public function getExtra();
 
     /**
-     * @param array $extra
+     * @param string $extra
      * @return PaymentInterface
      */
     public function setExtra($extra);

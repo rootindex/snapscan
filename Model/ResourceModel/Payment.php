@@ -20,16 +20,11 @@ class Payment extends AbstractDb
      * Payment constructor.
      * @param Context $context
      * @param Snapshot $snapshot
-     * @param RelationComposite $relationComposite
-     * @param null $connectionName
+     * @param RelationComposite $relation
+     * @param null $conn
      */
-    public function __construct(
-        Context $context,
-        Snapshot $snapshot,
-        RelationComposite $relationComposite,
-        $connectionName = null
-    ) {
-        parent::__construct($context, $snapshot, $relationComposite, $connectionName);
+    public function __construct(Context $context, Snapshot $snapshot, RelationComposite $relation, $conn = null) {
+        parent::__construct($context, $snapshot, $relation, $conn);
     }
 
     /**
@@ -39,6 +34,6 @@ class Payment extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('snapscan_payment', 'id');
+        $this->_init('snapscan_payment', 'entity_id');
     }
 }

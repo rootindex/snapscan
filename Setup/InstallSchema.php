@@ -40,8 +40,14 @@ class InstallSchema implements InstallSchemaInterface
                 PaymentInterface::ID,
                 Table::TYPE_INTEGER,
                 null,
-                ['nullable' => false, 'primary' => true],
-                'Payment Id'
+                ['identity' => true, 'nullable' => false, 'primary' => true],
+                'Entity Id'
+            )->addColumn(
+                PaymentInterface::SNAPSCAN_ID,
+                Table::TYPE_INTEGER,
+                null,
+                ['nullable' => false],
+                'SnapScan Id'
             )->addColumn(
                 PaymentInterface::STATUS,
                 Table::TYPE_TEXT,
@@ -103,6 +109,12 @@ class InstallSchema implements InstallSchemaInterface
                 [],
                 'User Reference'
             )->addColumn(
+                PaymentInterface::MERCHANT_REFERENCE,
+                Table::TYPE_TEXT,
+                255,
+                [],
+                'Merchant Reference'
+            )->addColumn(
                 PaymentInterface::STATEMENT_REFERENCE,
                 Table::TYPE_TEXT,
                 255,
@@ -117,13 +129,13 @@ class InstallSchema implements InstallSchemaInterface
             )->addColumn(
                 PaymentInterface::DELIVERY_ADDRESS,
                 Table::TYPE_TEXT,
-                255,
+                '2M',
                 [],
                 'Delivery Address'
             )->addColumn(
                 PaymentInterface::EXTRA,
                 Table::TYPE_TEXT,
-                255,
+                '2M',
                 [],
                 'Extra'
             )->setComment(

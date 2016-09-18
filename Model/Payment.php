@@ -49,7 +49,8 @@ class Payment extends AbstractModel implements PaymentInterface
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = []
-    ) {
+    )
+    {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -64,18 +65,18 @@ class Payment extends AbstractModel implements PaymentInterface
     /**
      * @return int
      */
-    public function getId()
+    public function getSnapscanId()
     {
-        return $this->getData(PaymentInterface::ID);
+        return $this->getData(PaymentInterface::SNAPSCAN_ID);
     }
 
     /**
-     * @param int $id
+     * @param int $snapScanId
      * @return PaymentInterface
      */
-    public function setId($id)
+    public function setSnapscanId($snapScanId)
     {
-        return $this->setData(PaymentInterface::ID, $id);
+        return $this->setData(PaymentInterface::SNAPSCAN_ID, $snapScanId);
     }
 
     /**
@@ -300,48 +301,36 @@ class Payment extends AbstractModel implements PaymentInterface
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getDeliveryAddress()
     {
-        $data = [];
-
-        if ($this->getData(PaymentInterface::DELIVERY_ADDRESS) !== '') {
-            $data = unserialize($this->getData(PaymentInterface::DELIVERY_ADDRESS));
-        }
-
-        return $data;
+        return $this->getData(PaymentInterface::DELIVERY_ADDRESS);
     }
 
     /**
-     * @param array $deliveryAddress
+     * @param string $deliveryAddress
      * @return PaymentInterface
      */
     public function setDeliveryAddress($deliveryAddress)
     {
-        return $this->setData(PaymentInterface::DELIVERY_ADDRESS, $this->serialize($deliveryAddress));
+        return $this->setData(PaymentInterface::DELIVERY_ADDRESS, $deliveryAddress);
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getExtra()
     {
-        $data = [];
-
-        if ($this->getData(PaymentInterface::EXTRA) !== '') {
-            $data = unserialize($this->getData(PaymentInterface::EXTRA));
-        }
-
-        return $data;
+        return $this->getData(PaymentInterface::EXTRA);
     }
 
     /**
-     * @param array $extra
+     * @param string $extra
      * @return PaymentInterface
      */
     public function setExtra($extra)
     {
-        return $this->setData(PaymentInterface::EXTRA, $this->serialize($extra));
+        return $this->setData(PaymentInterface::EXTRA, $extra);
     }
 }

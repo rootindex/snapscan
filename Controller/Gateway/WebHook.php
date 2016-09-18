@@ -5,11 +5,17 @@
 
 namespace FDW\SnapScan\Controller\Gateway;
 
+use FDW\SnapScan\Api\Data\PaymentInterfaceFactory;
+use FDW\SnapScan\Api\PaymentRepositoryInterfaceFactory;
+use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Phrase;
+use Magento\Framework\Webapi\Exception;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class WebHook
@@ -18,12 +24,42 @@ use Magento\Framework\Phrase;
 class WebHook extends Action
 {
     /**
+     * @var ScopeConfigInterface
+     */
+    private $scopeConfig;
+    /**
+     * @var DataObjectHelper
+     */
+    private $dataObjectHelper;
+    /**
+     * @var PaymentRepositoryInterfaceFactory
+     */
+    private $paymentRepositoryFactory;
+    /**
+     * @var PaymentInterfaceFactory
+     */
+    private $paymentFactory;
+
+    /**
      * Ping constructor.
      * @param Context $context
+     * @param ScopeConfigInterface $scopeConfig
+     * @param PaymentRepositoryInterfaceFactory $paymentRepositoryFactory
+     * @param PaymentInterfaceFactory $paymentFactory
+     * @param DataObjectHelper $dataObjectHelper
      */
-    public function __construct(Context $context)
-    {
+    public function __construct(
+        Context $context,
+        ScopeConfigInterface $scopeConfig,
+        PaymentRepositoryInterfaceFactory $paymentRepositoryFactory,
+        PaymentInterfaceFactory $paymentFactory,
+        DataObjectHelper $dataObjectHelper
+    ) {
         parent::__construct($context);
+        $this->scopeConfig = $scopeConfig;
+        $this->dataObjectHelper = $dataObjectHelper;
+        $this->paymentRepositoryFactory = $paymentRepositoryFactory;
+        $this->paymentFactory = $paymentFactory;
     }
 
     /**
@@ -35,19 +71,78 @@ class WebHook extends Action
         $payloadData = $this->getRequest()->getParam('payload');
         $token = $this->getRequest()->getParam('token');
 
-        // TODO make sure we validate against token.
+        // Get admin value
+        $configToken = $this
+            ->scopeConfig
+            ->getValue('payment/snapscan/callback_token', ScopeInterface::SCOPE_STORE);
+
+        $error = [];
+
+        if ($token !== $configToken) {
+            $error[] = new Phrase('callback tokens does not match');
+        }
 
         if (!$payloadData) {
-            throw new InputException(new Phrase('Payload is not present.'));
+            $error[] = new Phrase('payload not present');
         }
 
         $payload = json_decode($payloadData, true);
 
-        // TODO: Update SnapScan table
+        foreach ($payload as $key => $value) {
+
+            // set snapscan id
+            if ($key === 'id') {
+                $payload['snapscanId'] = $value;
+            }
+
+            // we wont be using the array types but lets keep it
+            if (gettype($value) === 'array') {
+                $payload[$key] = serialize($value);
+            }
+
+            // convert date to correct format
+            if ($key === 'date') {
+                $payload[$key] = date("Y-m-d H:m:s", strtotime($value));
+            }
+
+            // convert values from cents to rand
+            if (gettype($value) === 'integer' && ($key !== 'id' || $key !== 'snapscanId')) {
+                $payload[$key] = $value / 100;
+            }
+        }
+
+        unset($payload['id']);
+
+        /** @var \FDW\SnapScan\Api\PaymentRepositoryInterface $paymentRepository */
+        $paymentRepository = $this->paymentRepositoryFactory->create();
+
+        /** @var \FDW\SnapScan\Api\Data\PaymentInterface $paymentObject */
+        $paymentObject = $this->paymentFactory->create();
+
+        $this->dataObjectHelper->populateWithArray(
+            $paymentObject,
+            $payload,
+            '\FDW\SnapScan\Api\Data\PaymentInterface'
+        );
+
+        // If not exist add
+        if (!$paymentRepository->getByMerchantReference($paymentObject->getMerchantReference())) {
+            $paymentRepository->save($paymentObject);
+        }
 
         /** @var \Magento\Framework\Controller\Result\Json $response */
         $response = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $response->setData(['message' => 'Received payload', 'payload' => $payload, 'token' => $token]);
+
+        // Errors detected
+        if (!empty($error)) {
+            $response->setData(['message' => implode(", ", $error)]);
+            $response->setHttpResponseCode(Exception::HTTP_BAD_REQUEST);
+        }
+
+        // No errors
+        if (empty($error)) {
+            $response->setData(['message' => 'completed', 'payload' => $payload]);
+        }
 
         return $response;
     }

@@ -119,8 +119,7 @@ class PaymentRepository implements PaymentRepositoryInterface
      * Get payment by merchant reference.
      *
      * @param string $merchantReference
-     * @return Data\PaymentInterface
-     * @throws LocalizedException
+     * @return Data\PaymentInterface|boolean
      */
     public function getByMerchantReference($merchantReference)
     {
@@ -129,10 +128,9 @@ class PaymentRepository implements PaymentRepositoryInterface
         $this->resource->load($payment, $merchantReference, Data\PaymentInterface::MERCHANT_REFERENCE);
 
         if (!$payment->getId()) {
-            throw new NoSuchEntityException(
-                __('Payment with merchant reference "%1" does not exist.', $merchantReference)
-            );
+            return false;
         }
+
         return $payment;
     }
 

@@ -38,7 +38,6 @@ interface PaymentRepositoryInterface
      *
      * @param string $merchantReference
      * @return Data\PaymentInterface
-     * @throws LocalizedException
      */
     public function getByMerchantReference($merchantReference);
 
