@@ -17,6 +17,7 @@ use Magento\Framework\Exception\InputException;
 use Magento\Framework\Phrase;
 use Magento\Framework\Webapi\Exception;
 use Magento\Store\Model\ScopeInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class WebHook
@@ -40,6 +41,10 @@ class WebHook extends Action
      * @var PaymentInterfaceFactory
      */
     private $paymentFactory;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * Ping constructor.
@@ -48,19 +53,22 @@ class WebHook extends Action
      * @param PaymentRepositoryInterfaceFactory $paymentRepositoryFactory
      * @param PaymentInterfaceFactory $paymentFactory
      * @param DataObjectHelper $dataObjectHelper
+     * @param LoggerInterface $logger
      */
     public function __construct(
         Context $context,
         ScopeConfigInterface $scopeConfig,
         PaymentRepositoryInterfaceFactory $paymentRepositoryFactory,
         PaymentInterfaceFactory $paymentFactory,
-        DataObjectHelper $dataObjectHelper
+        DataObjectHelper $dataObjectHelper,
+        LoggerInterface $logger
     ) {
         parent::__construct($context);
         $this->scopeConfig = $scopeConfig;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->paymentRepositoryFactory = $paymentRepositoryFactory;
         $this->paymentFactory = $paymentFactory;
+        $this->logger = $logger;
     }
 
     /**
@@ -71,6 +79,8 @@ class WebHook extends Action
     {
         $payloadData = $this->getRequest()->getParam('payload');
         $token = $this->getRequest()->getParam('token');
+
+        $this->logger->debug(json_encode([$payloadData, $token], 128));
 
         // Get admin value
         $configToken = $this
