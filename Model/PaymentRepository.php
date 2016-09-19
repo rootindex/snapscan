@@ -131,7 +131,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             return false;
         }
 
-        return $payment;
+        return true;
     }
 
     /**

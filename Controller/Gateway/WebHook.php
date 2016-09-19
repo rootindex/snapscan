@@ -5,6 +5,7 @@
 
 namespace FDW\SnapScan\Controller\Gateway;
 
+use FDW\SnapScan\Api\Data\PaymentInterface;
 use FDW\SnapScan\Api\Data\PaymentInterfaceFactory;
 use FDW\SnapScan\Api\PaymentRepositoryInterfaceFactory;
 use Magento\Framework\Api\DataObjectHelper;
@@ -122,7 +123,7 @@ class WebHook extends Action
         $this->dataObjectHelper->populateWithArray(
             $paymentObject,
             $payload,
-            '\FDW\SnapScan\Api\Data\PaymentInterface'
+            PaymentInterface::class
         );
 
         // If not exist add

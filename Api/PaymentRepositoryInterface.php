@@ -37,7 +37,7 @@ interface PaymentRepositoryInterface
      * Get payment by merchant reference.
      *
      * @param string $merchantReference
-     * @return Data\PaymentInterface
+     * @return boolean
      */
     public function getByMerchantReference($merchantReference);
 
