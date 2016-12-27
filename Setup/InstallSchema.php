@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright (c) 2016 Fontera Digital Works. All rights reserved.
+ * Copyright (c) 2016 CoisIO. All rights reserved.
  */
 
-namespace FDW\SnapScan\Setup;
+namespace CoisIO\SnapScan\Setup;
 
-use FDW\SnapScan\Api\Data\PaymentInterface;
+use CoisIO\SnapScan\Api\Data\PaymentInterface;
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -13,7 +13,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
  * Class InstallSchema
- * @package FDW\SnapScan\Setup
+ * @package CoisIO\SnapScan\Setup
  */
 class InstallSchema implements InstallSchemaInterface
 {

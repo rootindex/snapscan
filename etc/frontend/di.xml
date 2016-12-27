@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!--
-  ~ Copyright © 2016 Fontera Digital Works. All rights reserved.
+  ~ Copyright © 2016 CoisIO. All rights reserved.
   ~ See LICENSE.md for license details.
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="snapscan_config_provider" xsi:type="object">FDW\SnapScan\Model\Ui\SnapScanConfigProvider</item>
+                <item name="snapscan_config_provider" xsi:type="object">CoisIO\SnapScan\Model\Ui\SnapScanConfigProvider</item>
             </argument>
         </arguments>
     </type>

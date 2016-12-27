@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!--
-  ~ Copyright © 2016 Fontera Digital Works. All rights reserved.
+  ~ Copyright © 2016 CoisIO. All rights reserved.
   ~ See LICENSE.md for license details.
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="payment">
             <group id="snapscan_section" translate="label" type="text" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label><![CDATA[SnapScan <small>by Fontera Digital Works</small>]]></label>
+                <label><![CDATA[SnapScan <small>by CoisIO</small>]]></label>
                 <comment><![CDATA[
                     Quick, easy payments, for you and your customers. Works with any South African Bank.
                     Visit your merchant accounting system <a href="https://merchant.getsnapscan.com" target="_blank">here</a>.

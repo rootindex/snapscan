@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright © 2016 Fontera Digital Works. All rights reserved.
+ * Copyright © 2016 CoisIO. All rights reserved.
  * See LICENSE.md for license details.
  */
 
-namespace FDW\SnapScan\Observer;
+namespace CoisIO\SnapScan\Observer;
 
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\Observer;
@@ -15,7 +15,7 @@ use Magento\Payment\Model\InfoInterface;
 
 /**
  * Class DataAssignObserver
- * @package FDW\SnapScan\Observer
+ * @package CoisIO\SnapScan\Observer
  */
 class DataAssignObserver extends AbstractDataAssignObserver
 {

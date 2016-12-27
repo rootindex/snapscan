@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © 2016 Fontera Digital Works. All rights reserved.
+ * Copyright © 2016 CoisIO. All rights reserved.
  * See LICENSE.md for license details.
  */
-namespace FDW\SnapScan\Gateway\Http;
+namespace CoisIO\SnapScan\Gateway\Http;
 
 use Magento\Payment\Gateway\ConfigInterface;
 use Magento\Payment\Gateway\Http\TransferBuilder;
@@ -12,7 +12,7 @@ use Magento\Payment\Gateway\Http\TransferInterface;
 
 /**
  * Class CaptureTransferFactory
- * @package FDW\SnapScan\Gateway\Http
+ * @package CoisIO\SnapScan\Gateway\Http
  */
 class CaptureTransferFactory implements TransferFactoryInterface
 {

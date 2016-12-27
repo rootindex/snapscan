@@ -1,15 +1,15 @@
 <?php
 /**
- * Copyright (c) 2016 Fontera Digital Works. All rights reserved.
+ * Copyright (c) 2016 CoisIO. All rights reserved.
  */
 
-namespace FDW\SnapScan\Api\Data;
+namespace CoisIO\SnapScan\Api\Data;
 
 use Magento\Framework\Api\SearchResultsInterface;
 
 /**
  * Interface PaymentSearchResultInterface
- * @package FDW\SnapScan\Api\Data
+ * @package CoisIO\SnapScan\Api\Data
  * @api
  */
 interface PaymentSearchResultInterface extends SearchResultsInterface

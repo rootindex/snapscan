@@ -1,16 +1,16 @@
 <?php
 /**
- * Copyright (c) 2016 Fontera Digital Works. All rights reserved.
+ * Copyright (c) 2016 CoisIO. All rights reserved.
  */
 
-namespace FDW\SnapScan\Api;
+namespace CoisIO\SnapScan\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Interface PaymentRepositoryInterface.
- * @package FDW\SnapScan\Api
+ * @package CoisIO\SnapScan\Api
  * @api
  */
 interface PaymentRepositoryInterface

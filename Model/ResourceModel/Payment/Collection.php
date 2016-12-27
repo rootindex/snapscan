@@ -1,17 +1,17 @@
 <?php
 /**
- * Copyright (c) 2016 Fontera Digital Works. All rights reserved.
+ * Copyright (c) 2016 CoisIO. All rights reserved.
  */
 
-namespace FDW\SnapScan\Model\ResourceModel\Payment;
+namespace CoisIO\SnapScan\Model\ResourceModel\Payment;
 
-use FDW\SnapScan\Model\Payment;
-use FDW\SnapScan\Model\ResourceModel\Payment as PaymentResource;
+use CoisIO\SnapScan\Model\Payment;
+use CoisIO\SnapScan\Model\ResourceModel\Payment as PaymentResource;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Class Collection
- * @package FDW\SnapScan\Model\ResourceModel\Payment
+ * @package CoisIO\SnapScan\Model\ResourceModel\Payment
  */
 class Collection extends AbstractCollection
 {

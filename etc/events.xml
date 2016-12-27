@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!--
-  ~ Copyright © 2016 Fontera Digital Works. All rights reserved.
+  ~ Copyright © 2016 CoisIO. All rights reserved.
   ~ See LICENSE.md for license details.
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="payment_method_assign_data_snapscan">
-        <observer name="peach_payments_data_assign" instance="FDW\SnapScan\Observer\DataAssignObserver"/>
+        <observer name="peach_payments_data_assign" instance="CoisIO\SnapScan\Observer\DataAssignObserver"/>
     </event>
 </config>

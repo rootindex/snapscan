@@ -1,3 +1,4 @@
+
 Create QR CODE.
 https://pos.snapscan.io/qr/XXXXXXX.svg?id=M210000000&amount=123&snap_code_size=300
 https://pos.snapscan.io/qr/XXXXXXX?id=M210000001&amount=100&snap_code_size=300

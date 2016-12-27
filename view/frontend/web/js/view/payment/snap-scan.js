@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Fontera Digital Works. All rights reserved.
+ * Copyright © 2016 CoisIO. All rights reserved.
  * See LICENSE.md for license details.
  */
 
@@ -15,7 +15,7 @@ define(
         rendererList.push(
             {
                 type: 'snapscan',
-                component: 'FDW_SnapScan/js/view/payment/method-renderer/snap-scan-method'
+                component: 'CoisIO_SnapScan/js/view/payment/method-renderer/snap-scan-method'
             }
         );
         return Component.extend({});

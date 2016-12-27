@@ -3,7 +3,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace FDW\SnapScan\Gateway\Request;
+namespace CoisIO\SnapScan\Gateway\Request;
 
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
@@ -11,7 +11,7 @@ use Magento\Sales\Api\Data\OrderPaymentInterface;
 
 /**
  * Class CaptureRequest
- * @package FDW\SnapScan\Gateway\Request
+ * @package CoisIO\SnapScan\Gateway\Request
  */
 class CaptureRequest implements BuilderInterface
 {

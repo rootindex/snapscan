@@ -1,13 +1,13 @@
 <?php
 /**
- * Copyright (c) 2016 Fontera Digital Works. All rights reserved.
+ * Copyright (c) 2016 CoisIO. All rights reserved.
  */
 
-namespace FDW\SnapScan\Controller\Gateway;
+namespace CoisIO\SnapScan\Controller\Gateway;
 
-use FDW\SnapScan\Api\Data\PaymentInterface;
-use FDW\SnapScan\Api\Data\PaymentInterfaceFactory;
-use FDW\SnapScan\Api\PaymentRepositoryInterfaceFactory;
+use CoisIO\SnapScan\Api\Data\PaymentInterface;
+use CoisIO\SnapScan\Api\Data\PaymentInterfaceFactory;
+use CoisIO\SnapScan\Api\PaymentRepositoryInterfaceFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -21,7 +21,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class WebHook
- * @package FDW\SnapScan\Controller\Gateway
+ * @package CoisIO\SnapScan\Controller\Gateway
  */
 class WebHook extends Action
 {
@@ -124,10 +124,10 @@ class WebHook extends Action
 
         unset($payload['id']);
 
-        /** @var \FDW\SnapScan\Api\PaymentRepositoryInterface $paymentRepository */
+        /** @var \CoisIO\SnapScan\Api\PaymentRepositoryInterface $paymentRepository */
         $paymentRepository = $this->paymentRepositoryFactory->create();
 
-        /** @var \FDW\SnapScan\Api\Data\PaymentInterface $paymentObject */
+        /** @var \CoisIO\SnapScan\Api\Data\PaymentInterface $paymentObject */
         $paymentObject = $this->paymentFactory->create();
 
         $this->dataObjectHelper->populateWithArray(

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Fontera Digital Works. All rights reserved.
+ * Copyright © 2016 CoisIO. All rights reserved.
  * See LICENSE.md for license details.
  */
 
@@ -16,7 +16,7 @@ define(
         return Component.extend({
             snapScanPaymentTimerContinue: true,
             defaults: {
-                template: 'FDW_SnapScan/payment/snap-scan'
+                template: 'CoisIO_SnapScan/payment/snap-scan'
             },
             /**
              * Initialize.
@@ -70,7 +70,7 @@ define(
             snapScanPaymentTimer: function () {
                 setTimeout($.proxy(function () {
                     // complete code here
-                    console.log("FDW_SnapScan/payment/snap-scan running:" + Math.random());
+                    console.log("CoisIO_SnapScan/payment/snap-scan running:" + Math.random());
                     if (this.snapScanPaymentTimerContinue) {
                         this.snapScanPaymentTimer();
                     }

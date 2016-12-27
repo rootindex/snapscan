@@ -1,12 +1,12 @@
 <?php
 /**
- * Copyright (c) 2016 Fontera Digital Works. All rights reserved.
+ * Copyright (c) 2016 CoisIO. All rights reserved.
  */
 
-namespace FDW\SnapScan\Model;
+namespace CoisIO\SnapScan\Model;
 
-use FDW\SnapScan\Api\Data;
-use FDW\SnapScan\Api\PaymentRepositoryInterface;
+use CoisIO\SnapScan\Api\Data;
+use CoisIO\SnapScan\Api\PaymentRepositoryInterface;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SortOrder;
@@ -17,7 +17,7 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 
 /**
  * Class PaymentRepository
- * @package FDW\SnapScan\Model
+ * @package CoisIO\SnapScan\Model
  */
 class PaymentRepository implements PaymentRepositoryInterface
 {

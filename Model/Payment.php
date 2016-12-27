@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright (c) 2016 Fontera Digital Works. All rights reserved.
+ * Copyright (c) 2016 CoisIO. All rights reserved.
  */
 
-namespace FDW\SnapScan\Model;
+namespace CoisIO\SnapScan\Model;
 
-use FDW\SnapScan\Api\Data\PaymentInterface;
+use CoisIO\SnapScan\Api\Data\PaymentInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\Context;
@@ -14,7 +14,7 @@ use Magento\Framework\Registry;
 
 /**
  * Class Payment
- * @package FDW\SnapScan\Model
+ * @package CoisIO\SnapScan\Model
  */
 class Payment extends AbstractModel implements PaymentInterface
 {

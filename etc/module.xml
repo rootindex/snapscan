@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!--
-  ~ Copyright © 2016 Fontera Digital Works. All rights reserved.
+  ~ Copyright © 2016 CoisIO. All rights reserved.
   ~ See LICENSE.md for license details.
   -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="FDW_SnapScan" setup_version="1.0.0">
+    <module name="CoisIO_SnapScan" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Config"/>
             <module name="Magento_Payment"/>

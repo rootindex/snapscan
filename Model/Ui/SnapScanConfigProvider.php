@@ -1,17 +1,17 @@
 <?php
 /**
- * Copyright © 2016 Fontera Digital Works. All rights reserved.
+ * Copyright © 2016 CoisIO. All rights reserved.
  * See LICENSE.md for license details.
  */
 
-namespace FDW\SnapScan\Model\Ui;
+namespace CoisIO\SnapScan\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Payment\Gateway\Config\Config;
 
 /**
  * Class SnapScanConfigProvider
- * @package FDW\SnapScan\Model\Ui
+ * @package CoisIO\SnapScan\Model\Ui
  */
 class SnapScanConfigProvider implements ConfigProviderInterface
 {

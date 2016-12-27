@@ -1,3 +1,3 @@
-# FDW / SnapScan
+# CoisIO / SnapScan
 
-Magento 2 magento2-module
+Magento 2 SnapScan Module

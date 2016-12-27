@@ -3,14 +3,14 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace FDW\SnapScan\Gateway\Validator;
+namespace CoisIO\SnapScan\Gateway\Validator;
 
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 
 /**
  * Class ResponseCodeValidator
- * @package FDW\SnapScan\Gateway\Validator
+ * @package CoisIO\SnapScan\Gateway\Validator
  */
 class ResponseCodeValidator extends AbstractValidator
 {

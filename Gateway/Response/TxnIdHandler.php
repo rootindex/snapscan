@@ -3,14 +3,14 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace FDW\SnapScan\Gateway\Response;
+namespace CoisIO\SnapScan\Gateway\Response;
 
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 
 /**
  * Class TxnIdHandler
- * @package FDW\SnapScan\Gateway\Response
+ * @package CoisIO\SnapScan\Gateway\Response
  */
 class TxnIdHandler implements HandlerInterface
 {

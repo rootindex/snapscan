@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © 2016 Fontera Digital Works. All rights reserved.
+ * Copyright © 2016 CoisIO. All rights reserved.
  * See LICENSE.md for license details.
  */
-namespace FDW\SnapScan\Gateway\Http\Client;
+namespace CoisIO\SnapScan\Gateway\Http\Client;
 
 use Magento\Framework\HTTP\ZendClientFactory;
 use Magento\Payment\Gateway\Http\ClientException;
@@ -15,7 +15,7 @@ use Magento\Payment\Model\Method\Logger;
 
 /**
  * Class Zend
- * @package FDW\SnapScan\Gateway\Http\Client
+ * @package CoisIO\SnapScan\Gateway\Http\Client
  * @api
  */
 class Zend implements ClientInterface
